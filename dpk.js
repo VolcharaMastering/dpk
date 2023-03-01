@@ -11,7 +11,7 @@ exports.deterministicPartitionKey = (event) => {
   }
   else if (event) {
     const data = JSON.stringify(event);
-    candidate = crypto.createHash("sha3-512").update(data).digest("hex");
+    candidate = makeHash(data);
   }
 
   if (typeof candidate !== "string") {
@@ -19,7 +19,11 @@ exports.deterministicPartitionKey = (event) => {
   }
 
   if (candidate.length > MAX_PARTITION_KEY_LENGTH) {
-    candidate = crypto.createHash("sha3-512").update(candidate).digest("hex");
+    candidate = makeHash(candidate);
   }
   return candidate;
 };
+
+const makeHash = (item) =>{
+  return crypto.createHash("sha3-512").update(item).digest("hex");
+}

@@ -1,3 +1,0 @@
-## Brief.
-The main problem in this function is too many "if..else" constructions. One "if..else" is not needed at all. I didn't find any place in this function where applicable latest JS language features are. Of course, I can use ternary operators, but it shouldn't make code more "readable". Only shorter.  
-- My version is more "readable" than the original because it is shorter and I have reduced the repetitive constructions.
